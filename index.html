@@ -19,26 +19,27 @@ body {
   overflow:hidden;
 }
 
-/* Background Bild + Cinematic Zoom */
+/* Background + Cinematic Zoom */
 .hero img.bg {
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  animation:zoom 30s ease-in-out infinite alternate;
+  animation:zoom 40s ease-in-out infinite alternate;
 }
 
 @keyframes zoom {
-  from { transform:scale(1); }
-  to { transform:scale(1.08); }
+  from { transform:scale(1.06); }
+  to   { transform:scale(1.14); }
 }
 
-/* Dark Overlay */
+/* Dark Overlay mit mehr Depth */
 .overlay {
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(2px);
 }
 
 /* Logo */
@@ -50,11 +51,11 @@ body {
   width:320px;
   max-width:70vw;
 
-  /* Fade In */
+  /* Fade-In */
   opacity:0;
   animation:fadein 1.6s ease forwards;
 
-  /* SCHWARZES SVG → WEISS */
+  /* Schwarzes SVG wird weiss */
   filter:invert(1);
 }
 
