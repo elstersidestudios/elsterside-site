@@ -52,10 +52,10 @@
       );
   }
 
-  /* Logo */
+  /* Logo: eine stabile Position, kein Mobile-Jump */
   .logo {
     position: absolute;
-    top: 45%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -70,14 +70,6 @@
 
   @keyframes fadein {
     to { opacity: 1; }
-  }
-
-  /* Mobile: Logo weiter nach oben */
-  @media (max-width: 768px) {
-    .logo {
-      top: 40%;
-      width: clamp(240px, 70vw, 420px);
-    }
   }
 </style>
 </head>
