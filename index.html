@@ -20,9 +20,9 @@ body::after{content:'';position:fixed;inset:0;z-index:600;pointer-events:none;ba
 nav{position:fixed;top:0;left:0;right:0;z-index:400;height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
 nav.scrolled{background:rgba(9,14,20,.94);backdrop-filter:blur(16px);border-bottom-color:var(--edge)}
 .logo-link{display:flex;align-items:center}
-.logo-link img{display:block;height:42px;width:auto}
+.logo-link img{display:block;height:42px;width:auto;filter:brightness(0) invert(1)}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.nav-links a{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--cream)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-toggle{display:flex;align-items:center;border:1px solid var(--edgehi);overflow:hidden}
@@ -30,7 +30,7 @@ nav.scrolled{background:rgba(9,14,20,.94);backdrop-filter:blur(16px);border-bott
 .lang-btn.active{background:var(--c08);color:var(--cream)}
 .lang-btn:hover{color:var(--cream)}
 footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
-.footer-logo img{height:20px;width:auto;opacity:.22;display:block}
+.footer-logo img{height:20px;width:auto;opacity:.22;display:block;filter:brightness(0) invert(1)}
 .footer-copy{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--c35);letter-spacing:.08em}
 .footer-links{display:flex;gap:22px;list-style:none}
 .footer-links a{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--c35);letter-spacing:.08em;transition:color .2s}
@@ -52,7 +52,7 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
 .hero-tag{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c35);letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;opacity:0;animation:up .8s .3s ease both}
 .hero-tag::before{content:'';width:20px;height:1px;background:var(--c35)}
 .hero-h1{font-family:var(--serif);font-size:clamp(40px,5.2vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;opacity:0;animation:up .8s .45s ease both}
-.hero-sub{font-family:var(--body);font-size:14px;font-weight:300;color:var(--c60);line-height:1.75;max-width:560px;margin-bottom:48px;opacity:0;animation:up .8s .6s ease both}
+.hero-sub{font-family:var(--body);font-size:15px;font-weight:300;color:var(--c60);line-height:1.75;max-width:560px;margin-bottom:48px;opacity:0;animation:up .8s .6s ease both}
 .hero-btns{display:flex;gap:16px;opacity:0;animation:up .8s .75s ease both}
 .hero-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;border:1px solid var(--edgehi);color:var(--cream);transition:background .25s,border-color .25s,color .25s,gap .25s}
 .hero-btn:hover{background:var(--cream);border-color:var(--cream);color:var(--ink);gap:16px}
@@ -98,9 +98,9 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
 .ct-h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,40px);font-weight:400;line-height:1.2;margin-bottom:20px}
 .ct-h2 em{font-style:italic;color:var(--amber)}
 .ct-body{font-size:13px;line-height:1.85;color:var(--c60);font-weight:300;margin-bottom:36px}
-.ch-link{display:flex;align-items:center;gap:18px;padding:13px 0;border-bottom:1px solid var(--edge);font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);transition:color .2s}
-.ch-link:hover{color:var(--cream)}
-.ch-lbl{font-size:8px;color:var(--amber);letter-spacing:.15em;text-transform:uppercase;width:80px;flex-shrink:0}
+.ct-links{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.ct-links a{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;border:1px solid var(--edgehi);color:var(--cream);transition:background .25s,border-color .25s,color .25s}
+.ct-links a:hover{background:var(--cream);border-color:var(--cream);color:var(--ink)}
 .form{display:flex;flex-direction:column;gap:12px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .field{display:flex;flex-direction:column;gap:6px}
@@ -124,7 +124,7 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
 </head>
 <body class="lang-en">
 <nav id="nav">
-  <a class="logo-link" href="index.html"><img src="logo.svg" alt="ElsterSide Studios" style="height:42px;width:auto"></a>
+  <a class="logo-link" href="index.html"><img src="logo.svg" alt="ElsterSide Studios"></a>
   <ul class="nav-links">
     <li><a href="mixing.html" data-en>Artists</a><a href="mixing.html" data-de>Artists</a></li>
     <li><a href="companies.html" data-en>Companies</a><a href="companies.html" data-de>Unternehmen</a></li>
@@ -199,9 +199,11 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
       <h2 class="ct-h2" data-en>Tell me about<br>your <em>project.</em></h2><h2 class="ct-h2" data-de>Erzähl mir von<br>deinem <em>Projekt.</em></h2>
       <p class="ct-body" data-en>Send a demo, describe the brief, or just reach out. Every project starts with a conversation — no templates, no automated replies. A human will respond.</p>
       <p class="ct-body" data-de>Schick ein Demo, beschreib das Briefing, oder meld dich einfach. Jedes Projekt beginnt mit einem Gespräch — ein Mensch antwortet.</p>
-      <a class="ch-link" href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank"><span class="ch-lbl">SoundBetter</span>mixed-by-elsterside</a>
-      <a class="ch-link" href="https://www.linkedin.com/in/jensrotte/" target="_blank"><span class="ch-lbl">LinkedIn</span>Jens Rotte</a>
-      <a class="ch-link" href="mailto:jens@elstersidestudios.de"><span class="ch-lbl">Email</span>jens@elstersidestudios.de</a>
+      <div class="ct-links">
+        <a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank">SoundBetter</a>
+        <a href="https://www.linkedin.com/in/jensrotte/" target="_blank">LinkedIn</a>
+        <a href="mailto:jens@elstersidestudios.de">Email</a>
+      </div>
     </div>
     <div class="r d1">
       <!-- TODO: Formspree action-URL ersetzen mit echter ID von formspree.io -->
@@ -231,7 +233,7 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
   </div></div>
 </section>
 <footer>
-  <a href="index.html" class="footer-logo"><img src="logo.svg" alt="ElsterSide Studios" style="height:20px;width:auto;opacity:.22"></a>
+  <a href="index.html" class="footer-logo"><img src="logo.svg" alt="ElsterSide Studios"></a>
   <span class="footer-copy" data-en>© 2026 ElsterSide Studios · Leipzig, Germany</span><span class="footer-copy" data-de>© 2026 ElsterSide Studios · Leipzig, Deutschland</span>
   <ul class="footer-links">
     <li><a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank">SoundBetter</a></li>
