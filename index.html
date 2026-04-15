@@ -1,88 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elsterside Studios</title>
-
+<title>ElsterSide Studios — Audio Engineering · Mixing · AI Evaluation</title>
+<meta name="description" content="Your sound has to work everywhere. 25+ years of mixing for radio, clubs and streaming.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: #000;
-  }
-
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* Background + Cinematic Zoom */
-  /* Background + Cinematic Zoom */
-.hero img.bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  object-position: center 40%;   /* ← DAS IST DER MAGIC FIX */
-
-  animation: zoom 40s ease-in-out infinite alternate;
-  transform-origin: center;
-}
-
-  @keyframes zoom {
-    from { transform: scale(1.06); }
-    to   { transform: scale(1.14); }
-  }
-
-  /* Cinematic Depth: Gradient + Light Falloff */
-  .depth {
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0,0,0,0.35);
-    box-shadow: inset 0 0 220px rgba(0,0,0,0.75);
-
-    background-image:
-      linear-gradient(to bottom,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.20) 35%,
-        rgba(0,0,0,0.20) 65%,
-        rgba(0,0,0,0.65) 100%
-      );
-  }
-
-  /* Logo: eine stabile Position, kein Mobile-Jump */
-  .logo {
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%,-56%);
-
-    width: clamp(220px, 26vw, 440px);
-
-    opacity: 0;
-    animation: fadein 1.6s ease forwards;
-
-    /* schwarzes SVG -> weiss (bis du eine weisse SVG exportierst) */
-    filter: invert(1) drop-shadow(0 18px 40px rgba(0,0,0,0.55));
-  }
-
-  @keyframes fadein {
-    to { opacity: 1; }
-  }
+:root{--ink:#090e14;--dark:#0d1520;--panel:#121c26;--panel2:#172330;--edge:rgba(180,205,225,0.07);--edgehi:rgba(180,205,225,0.15);--amber:#b5662a;--amberd:rgba(181,102,42,0.10);--cream:#eee9e3;--c60:rgba(238,233,227,0.60);--c35:rgba(238,233,227,0.35);--c15:rgba(238,233,227,0.15);--c08:rgba(238,233,227,0.08);--serif:'Playfair Display',Georgia,serif;--body:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+body::after{content:'';position:fixed;inset:0;z-index:600;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4}
+.lang-de [data-en]{display:none!important}
+.lang-en [data-de]{display:none!important}
+nav{position:fixed;top:0;left:0;right:0;z-index:400;height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+nav.scrolled{background:rgba(9,14,20,.94);backdrop-filter:blur(16px);border-bottom-color:var(--edge)}
+.logo-link{display:flex;align-items:center}
+.logo-link img{display:block;height:42px;width:auto}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cream)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{display:flex;align-items:center;border:1px solid var(--edgehi);overflow:hidden}
+.lang-btn{font-family:var(--mono);font-size:9px;font-weight:300;letter-spacing:.1em;color:var(--c35);padding:6px 12px;cursor:pointer;transition:background .2s,color .2s;background:none;border:none}
+.lang-btn.active{background:var(--c08);color:var(--cream)}
+.lang-btn:hover{color:var(--cream)}
+footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.footer-logo img{height:20px;width:auto;opacity:.22;display:block}
+.footer-copy{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--c35);letter-spacing:.08em}
+.footer-links{display:flex;gap:22px;list-style:none}
+.footer-links a{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--c35);letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:var(--amber)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 52px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:8px;font-weight:300;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--amber)}
+.r{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.r.on{opacity:1;transform:none}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.2}50%{opacity:.6}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 92px}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('hero.jpg') center 32%/cover no-repeat}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,14,20,.38) 0%,rgba(9,14,20,.18) 30%,rgba(9,14,20,.60) 62%,rgba(9,14,20,.97) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:800px}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c35);letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;opacity:0;animation:up .8s .3s ease both}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--c35)}
+.hero-h1{font-family:var(--serif);font-size:clamp(40px,5.2vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;opacity:0;animation:up .8s .45s ease both}
+.hero-sub{font-family:var(--body);font-size:14px;font-weight:300;color:var(--c60);line-height:1.75;max-width:560px;margin-bottom:48px;opacity:0;animation:up .8s .6s ease both}
+.hero-btns{display:flex;gap:16px;opacity:0;animation:up .8s .75s ease both}
+.hero-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;border:1px solid var(--edgehi);color:var(--cream);transition:background .25s,border-color .25s,color .25s,gap .25s}
+.hero-btn:hover{background:var(--cream);border-color:var(--cream);color:var(--ink);gap:16px}
+.hero-btn.primary{background:rgba(181,102,42,.15);border-color:rgba(181,102,42,.4)}
+.hero-btn.primary:hover{background:var(--amber);border-color:var(--amber);color:var(--cream)}
+.scroll-hint{position:absolute;right:52px;bottom:44px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s 1.3s ease both}
+.scroll-hint span{font-family:var(--mono);font-size:8px;color:var(--c35);letter-spacing:.18em;text-transform:uppercase;writing-mode:vertical-rl}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--c35),transparent);animation:pulse 2.5s ease infinite}
+#manifesto{background:var(--panel);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);padding:52px;position:relative;z-index:2;overflow:hidden}
+#manifesto::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(to bottom,var(--amber),transparent)}
+.mf-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:130px 1fr;gap:60px;align-items:center}
+.mf-label{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--amber);letter-spacing:.18em;text-transform:uppercase;line-height:1.8}
+.mf-body{font-family:var(--serif);font-size:clamp(16px,1.6vw,21px);font-weight:400;line-height:1.65;color:var(--c60)}
+.mf-body em{font-style:italic;color:var(--cream)}
+#doors{padding:120px 0;position:relative;z-index:2}
+.doors-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--edge)}
+.door{background:var(--dark);padding:56px 48px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .3s}
+.door::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--amberd),transparent 60%);opacity:0;transition:opacity .4s}
+.door::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.door:hover{background:var(--panel)}
+.door:hover::before{opacity:1}
+.door:hover::after{transform:scaleX(1)}
+.door-label{font-family:var(--mono);font-size:8px;font-weight:400;color:var(--amber);letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;position:relative;z-index:1}
+.door-h{font-family:var(--serif);font-size:clamp(22px,2.4vw,32px);font-weight:400;line-height:1.2;margin-bottom:24px;position:relative;z-index:1}
+.door-body{font-size:13px;line-height:1.85;color:var(--c60);font-weight:300;margin-bottom:28px;position:relative;z-index:1}
+.door-points{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:36px;position:relative;z-index:1}
+.door-points li{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c35);display:flex;align-items:center;gap:9px;transition:color .2s}
+.door:hover .door-points li{color:var(--c60)}
+.door-points li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.door-cta{margin-top:auto;font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c35);letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:color .2s,gap .25s;position:relative;z-index:1}
+.door:hover .door-cta{color:var(--amber);gap:14px}
+#proof{padding:100px 0;position:relative;z-index:2;background:var(--panel);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}
+.proof-inner{max-width:760px;margin:0 auto}
+.proof-body{font-size:14px;line-height:1.9;color:var(--c60);font-weight:300;margin-bottom:18px}
+.proof-body strong{color:var(--cream);font-weight:400}
+#ticker{overflow:hidden;height:44px;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);background:var(--panel);display:flex;align-items:center;position:relative;z-index:2}
+.ticker-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite}
+.tick{font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c35);letter-spacing:.12em;text-transform:uppercase;padding:0 28px;border-right:1px solid var(--edge);height:44px;display:flex;align-items:center;flex-shrink:0}
+#trust{padding:48px 52px;text-align:center;position:relative;z-index:2;border-bottom:1px solid var(--edge)}
+.trust-text{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c35);letter-spacing:.06em;line-height:1.8}
+#contact-home{padding:120px 0;position:relative;z-index:2}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.ct-h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,40px);font-weight:400;line-height:1.2;margin-bottom:20px}
+.ct-h2 em{font-style:italic;color:var(--amber)}
+.ct-body{font-size:13px;line-height:1.85;color:var(--c60);font-weight:300;margin-bottom:36px}
+.ch-link{display:flex;align-items:center;gap:18px;padding:13px 0;border-bottom:1px solid var(--edge);font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);transition:color .2s}
+.ch-link:hover{color:var(--cream)}
+.ch-lbl{font-size:8px;color:var(--amber);letter-spacing:.15em;text-transform:uppercase;width:80px;flex-shrink:0}
+.form{display:flex;flex-direction:column;gap:12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--mono);font-size:8px;font-weight:300;color:var(--c35);letter-spacing:.14em;text-transform:uppercase}
+.field input,.field select,.field textarea{background:var(--panel);border:1px solid var(--edge);color:var(--cream);font-family:var(--body);font-size:12px;font-weight:300;padding:12px 15px;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color .2s}
+.field input::placeholder,.field textarea::placeholder{color:var(--c35)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(181,102,42,.5);background:var(--panel2)}
+.field textarea{resize:vertical;min-height:100px}
+.field select option{background:var(--panel)}
+.btn-submit{background:transparent;border:1px solid var(--edgehi);color:var(--cream);font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:15px;width:100%;position:relative;overflow:hidden;transition:border-color .25s;cursor:pointer}
+.btn-submit::before{content:'';position:absolute;inset:0;background:var(--cream);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;z-index:0}
+.btn-submit span{position:relative;z-index:1;transition:color .3s}
+.btn-submit:hover{border-color:var(--cream)}
+.btn-submit:hover::before{transform:scaleX(1)}
+.btn-submit:hover span{color:var(--ink)}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success h3{font-family:var(--serif);font-size:22px;margin-bottom:12px}
+.form-success p{font-size:13px;color:var(--c60)}
+@media(max-width:960px){nav{padding:0 24px}.nav-links{display:none}.wrap{padding:0 24px}footer{flex-direction:column;gap:16px;padding:24px;text-align:center}#hero{padding:0 24px 72px}.mf-wrap{grid-template-columns:1fr;gap:16px}#manifesto{padding:44px 24px}.doors-grid{grid-template-columns:1fr}.ct-grid{grid-template-columns:1fr;gap:56px}.row2{grid-template-columns:1fr}#trust{padding:36px 24px}}
 </style>
 </head>
-
-<body>
-  <div class="hero">
-    <img class="bg" src="hero.jpg" alt="">
-    <div class="depth"></div>
-    <img class="logo" src="logo.svg" alt="Elsterside Studios">
-  </div> <a href="/impressum.html" style="position:fixed;bottom:1rem;right:1.5rem;color:#666;font-size:0.75rem;text-decoration:none;">Impressum</a>
+<body class="lang-en">
+<nav id="nav">
+  <a class="logo-link" href="index.html"><img src="logo.svg" alt="ElsterSide Studios" style="height:42px;width:auto"></a>
+  <ul class="nav-links">
+    <li><a href="mixing.html" data-en>Artists</a><a href="mixing.html" data-de>Artists</a></li>
+    <li><a href="companies.html" data-en>Companies</a><a href="companies.html" data-de>Unternehmen</a></li>
+    <li><a href="studio.html" data-en>Studio</a><a href="studio.html" data-de>Studio</a></li>
+    <li><a href="#contact-home" data-en>Contact</a><a href="#contact-home" data-de>Kontakt</a></li>
+  </ul>
+  <div class="nav-right"><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button></div></div>
+</nav>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="hero-tag"><span data-en>Leipzig · 25+ years in audio</span><span data-de>Leipzig · 25+ Jahre in Audio</span></p>
+    <h1 class="hero-h1"><span data-en>Your sound has to work everywhere.</span><span data-de>Dein Sound muss überall funktionieren.</span></h1>
+    <p class="hero-sub"><span data-en>Club systems, streaming, commercial spaces, AI generated content. If it doesn't translate, it doesn't work. That's where the engineer matters.</span><span data-de>Club, Streaming, Gastronomie, KI generierter Content. Wenn es nicht übersetzt, funktioniert es nicht. Genau da zählt der Engineer.</span></p>
+    <div class="hero-btns">
+      <a href="#artists" class="hero-btn primary" data-en>For Artists →</a>
+      <a href="#artists" class="hero-btn primary" data-de>Für Artists →</a>
+      <a href="#companies" class="hero-btn" data-en>For Companies →</a>
+      <a href="#companies" class="hero-btn" data-de>Für Unternehmen →</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+<div id="manifesto" class="r">
+  <div class="mf-wrap">
+    <span class="mf-label" data-en>Approach</span><span class="mf-label" data-de>Haltung</span>
+    <p class="mf-body" data-en>AI tools can analyse, suggest and optimise. But they can't listen with <em>context</em>, decide with <em>intent</em>, or know what a track needs to move a room at 2am. That gap is where real experience matters.</p>
+    <p class="mf-body" data-de>KI Tools können analysieren und optimieren. Aber sie können nicht mit <em>Kontext</em> zuhören, mit <em>Absicht</em> entscheiden oder wissen, was ein Track braucht, um einen Raum um 2 Uhr nachts zu bewegen. Genau das ist der Punkt, an dem <em>echte Erfahrung</em> zählt.</p>
+  </div>
+</div>
+<section id="doors">
+  <div class="wrap"><div class="doors-grid">
+    <a class="door r" href="mixing.html" id="artists">
+      <div class="door-label" data-en>For Artists &amp; Labels</div><div class="door-label" data-de>Für Artists &amp; Labels</div>
+      <h2 class="door-h" data-en>Mixes that hold up<br>beyond the studio.</h2><h2 class="door-h" data-de>Mixe, die außerhalb<br>des Studios bestehen.</h2>
+      <p class="door-body" data-en>Your track competes with major label releases the moment it hits streaming. It needs low end that holds up on real systems, competitive loudness without killing dynamics, and translation from club systems to earbuds. 25 years of mixing for radio, clubs and streaming. Not plugins, not presets, decisions.</p>
+      <p class="door-body" data-de>Dein Track konkurriert mit veröffentlichten Major Label Records, sobald er im Streaming landet. Er braucht Low End, das auf echten Systemen funktioniert, kompetitive Lautheit ohne tote Dynamik und Übersetzung von Club Systemen bis zu Earbuds. 25 Jahre Mixing für Radio, Club und Streaming. Keine Plugins, keine Presets, Entscheidungen.</p>
+      <ul class="door-points"><li data-en>Stem &amp; full-mix mixing</li><li data-de>Stem- &amp; Full-Mix Mixing</li><li data-en>Stereo &amp; stem mastering</li><li data-de>Stereo- &amp; Stem-Mastering</li><li data-en>Real-world playback validation</li><li data-de>Playback-Validierung</li><li data-en>EP &amp; album packages</li><li data-de>EP- &amp; Album-Pakete</li></ul>
+      <span class="door-cta" data-en>Send your track →</span><span class="door-cta" data-de>Track einreichen →</span>
+    </a>
+    <a class="door r d1" href="companies.html" id="companies">
+      <div class="door-label" data-en>For Companies &amp; Platforms</div><div class="door-label" data-de>Für Unternehmen &amp; Plattformen</div>
+      <h2 class="door-h" data-en>Audio that works across<br>platforms and formats.</h2><h2 class="door-h" data-de>Audio, das plattformübergreifend<br>funktioniert.</h2>
+      <p class="door-body" data-en>Modern audio doesn't live in one place. It moves across devices, codecs and playback environments. AI generated voice that breaks on mobile or sounds artificial. Brand audio that disappears in noisy environments. Content that collapses on real speakers. 25 years solving exactly these problems in broadcast, hospitality and production environments.</p>
+      <p class="door-body" data-de>Modernes Audio lebt nicht an einem Ort. Es bewegt sich über Geräte, Codecs und Wiedergabeumgebungen. KI Voice, die auf Mobilgeräten bricht oder künstlich wirkt. Brand Audio, das im lauten Restaurant verschwindet. Content, der auf echten Speakern kollabiert. Seit 25 Jahren löse ich genau diese Probleme in Broadcast, Gastronomie und Produktionsumgebungen.</p>
+      <ul class="door-points"><li data-en>AI audio output evaluation</li><li data-de>KI-Audio-Evaluation</li><li data-en>Voice &amp; mix consistency across platforms</li><li data-de>Voice- &amp; Mix-Konsistenz</li><li data-en>Commercial audio (57 locations delivered)</li><li data-de>Commercial Audio (57 Standorte)</li><li data-en>Calibrated playback validation</li><li data-de>Kalibrierte Playback-Validierung</li></ul>
+      <span class="door-cta" data-en>Start a project →</span><span class="door-cta" data-de>Projekt starten →</span>
+    </a>
+  </div></div>
+</section>
+<section id="proof">
+  <div class="wrap"><div class="proof-inner r">
+    <div class="eyebrow" data-en>Track record</div><div class="eyebrow" data-de>Referenzen</div>
+    <p class="proof-body" data-en>Responsible for the <strong>sound strategy of one of the leading hospitality brands</strong> in Germany and Austria. 57 locations, thousands of guests daily.</p>
+    <p class="proof-body" data-de>Verantwortlich für das <strong>Soundkonzept einer der führenden Gastronomiemarken</strong> in Deutschland und Österreich. 57 Standorte, tausende Gäste täglich.</p>
+    <p class="proof-body" data-en>Co-created one of <strong>Germany's most successful radio mix shows</strong>, still running today. 25 years of making sound work outside the studio — in clubs, on air and in real environments.</p>
+    <p class="proof-body" data-de>Mitentwickler einer der <strong>erfolgreichsten deutschen Radiomixshows</strong>, die bis heute läuft. 25 Jahre Erfahrung, Sound außerhalb des Studios funktionieren zu lassen.</p>
+  </div></div>
+</section>
+<div id="ticker"><div class="ticker-track">
+  <span class="tick">Kii Audio Three</span><span class="tick">Weiss DS1</span><span class="tick">Metric Halo</span><span class="tick">Maselec EQ</span><span class="tick">Manley Dynamics</span><span class="tick">SSL Bus</span><span class="tick">UAD Platform</span><span class="tick">Focal Clear Pro MG</span><span class="tick">Brainworx</span><span class="tick">iZotope RX</span><span class="tick">Genelec</span><span class="tick">25+ Years</span>
+  <span class="tick">Kii Audio Three</span><span class="tick">Weiss DS1</span><span class="tick">Metric Halo</span><span class="tick">Maselec EQ</span><span class="tick">Manley Dynamics</span><span class="tick">SSL Bus</span><span class="tick">UAD Platform</span><span class="tick">Focal Clear Pro MG</span><span class="tick">Brainworx</span><span class="tick">iZotope RX</span><span class="tick">Genelec</span><span class="tick">25+ Years</span>
+</div></div>
+<div id="trust">
+  <p class="trust-text" data-en>25+ years in radio, club, hospitality and production. Kii Audio THREE Speakers, fully DSP controlled. I mix under the same conditions in which music is actually heard outside.</p>
+  <p class="trust-text" data-de>25+ Jahre in Radio, Club, Gastronomie und Produktion. Kii Audio THREE Speaker, vollständig DSP gesteuert. Ich mische unter den gleichen Bedingungen, unter denen Musik draußen gehört wird.</p>
+</div>
+<section id="contact-home">
+  <div class="wrap"><div class="ct-grid">
+    <div class="r">
+      <div class="eyebrow" data-en>Get in touch</div><div class="eyebrow" data-de>Kontakt</div>
+      <h2 class="ct-h2" data-en>Tell me about<br>your <em>project.</em></h2><h2 class="ct-h2" data-de>Erzähl mir von<br>deinem <em>Projekt.</em></h2>
+      <p class="ct-body" data-en>Send a demo, describe the brief, or just reach out. Every project starts with a conversation — no templates, no automated replies. A human will respond.</p>
+      <p class="ct-body" data-de>Schick ein Demo, beschreib das Briefing, oder meld dich einfach. Jedes Projekt beginnt mit einem Gespräch — ein Mensch antwortet.</p>
+      <a class="ch-link" href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank"><span class="ch-lbl">SoundBetter</span>mixed-by-elsterside</a>
+      <a class="ch-link" href="https://www.linkedin.com/in/jensrotte/" target="_blank"><span class="ch-lbl">LinkedIn</span>Jens Rotte</a>
+      <a class="ch-link" href="mailto:jens@elstersidestudios.de"><span class="ch-lbl">Email</span>jens@elstersidestudios.de</a>
+    </div>
+    <div class="r d1">
+      <!-- TODO: Formspree action-URL ersetzen mit echter ID von formspree.io -->
+      <form id="contact-form" class="form" action="https://formspree.io/f/xyzgabcd" method="POST">
+        <input type="hidden" name="_subject" value="New project inquiry via elstersidestudios.de">
+        <div class="row2">
+          <div class="field"><label data-en>Name</label><label data-de>Name</label><input type="text" name="name" placeholder="Artist or brand" required></div>
+          <div class="field"><label data-en>Email</label><label data-de>E-Mail</label><input type="email" name="email" placeholder="you@domain.com" required></div>
+        </div>
+        <div class="field">
+          <label data-en>I'm looking for</label><label data-de>Ich suche</label>
+          <select name="service" required>
+            <option value="" disabled selected data-en>Select a service</option>
+            <option value="" disabled selected data-de>Service wählen</option>
+            <option>Mixing &amp; Mastering</option>
+            <option>AI Audio Evaluation</option>
+            <option>Commercial Audio / Sound Branding</option>
+            <option data-en>Not sure yet — let's talk</option>
+            <option data-de>Noch unsicher — lass uns reden</option>
+          </select>
+        </div>
+        <div class="field"><label data-en>Project details</label><label data-de>Projektdetails</label><textarea name="message" placeholder="Genre, tracks, deadline, references..." required></textarea></div>
+        <button type="submit" class="btn-submit"><span data-en>Send project brief →</span><span data-de>Briefing senden →</span></button>
+      </form>
+      <div class="form-success" id="form-success"><h3 data-en>Message received.</h3><h3 data-de>Nachricht erhalten.</h3><p data-en>I'll be in touch shortly.</p><p data-de>Ich melde mich.</p></div>
+    </div>
+  </div></div>
+</section>
+<footer>
+  <a href="index.html" class="footer-logo"><img src="logo.svg" alt="ElsterSide Studios" style="height:20px;width:auto;opacity:.22"></a>
+  <span class="footer-copy" data-en>© 2026 ElsterSide Studios · Leipzig, Germany</span><span class="footer-copy" data-de>© 2026 ElsterSide Studios · Leipzig, Deutschland</span>
+  <ul class="footer-links">
+    <li><a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank">SoundBetter</a></li>
+    <li><a href="https://www.linkedin.com/in/jensrotte/" target="_blank">LinkedIn</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+    <li><a href="impressum.html#datenschutz" data-en>Privacy</a><a href="impressum.html#datenschutz" data-de>Datenschutz</a></li>
+  </ul>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.07});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
+setLang(localStorage.getItem('lang')||'en');
+const form=document.getElementById('contact-form'),success=document.getElementById('form-success');
+if(form){form.addEventListener('submit',async(e)=>{e.preventDefault();try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(res.ok){form.style.display='none';success.style.display='block'}else{alert('Please email jens@elstersidestudios.de directly.')}}catch(err){alert('Please email jens@elstersidestudios.de directly.')}})}
+</script>
 </body>
 </html>
