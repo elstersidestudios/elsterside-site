@@ -114,15 +114,16 @@ header {
     padding: 10rem 0 6rem;
     position: relative;
     overflow: hidden;
+    background-image: url('studio-hero.jpg');
+    background-size: cover;
+    background-position: center 30%;
 }
 
 .hero::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background:
-        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(181, 102, 42, 0.08), transparent 70%),
-        radial-gradient(ellipse 50% 30% at 85% 75%, rgba(181, 102, 42, 0.04), transparent 70%);
+    background: rgba(9, 14, 20, 0.68);
     pointer-events: none;
 }
 
@@ -979,6 +980,10 @@ footer {
 <section class="cta">
     <div class="container">
         <div class="cta-content">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:2.5rem;">
+                <img src="portrait.jpg" alt="Jens Rotte" style="width:56px; height:56px; border-radius:50%; object-fit:cover; object-position:center top; border:1px solid rgba(238,233,227,0.15);">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--cream-dim); letter-spacing:0.08em; text-transform:uppercase;">Jens Rotte · ElsterSide Studios</span>
+            </div>
             <span class="section-marker">Send your track</span>
             <h2 class="cta-headline en">Send me your <em>track</em> for a short mix feedback.</h2>
             <h2 class="cta-headline de">Schick mir deinen <em>Track</em> für ein kurzes Mix-Feedback.</h2>
