@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mixing & Mastering · ElsterSide Studios</title>
+<meta name="description" content="Mixing and mastering for artists and producers. 25 years across club, streaming and real-world playback. I mix for the song.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #090e14;
+    --ink-soft: #0f1621;
+    --cream: #eee9e3;
+    --cream-dim: rgba(238, 233, 227, 0.62);
+    --cream-faint: rgba(238, 233, 227, 0.38);
+    --amber: #b5662a;
+    --amber-bright: #d17a37;
+    --line: rgba(238, 233, 227, 0.12);
+    --line-soft: rgba(238, 233, 227, 0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.de { display: none; }
+body.lang-de .de { display: block; }
+body.lang-de .en { display: none; }
+body.lang-de span.de, body.lang-de a.de { display: inline; }
+body.lang-de span.en, body.lang-de a.en { display: none; }
+span.de, a.de { display: none; }
+span.en, a.en { display: inline; }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 0;
+    background: rgba(9, 14, 20, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.nav { display: flex; justify-content: space-between; align-items: center; }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--cream);
+}
+
+.logo img { height: 28px; filter: brightness(0) invert(1); }
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+.nav-back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.nav-back:hover { color: var(--amber-bright); }
+
+.lang-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cream-dim);
+    background: none;
+    border: 1px solid var(--line);
+    padding: 0.45rem 0.75rem;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+}
+
+.lang-toggle:hover { color: var(--amber-bright); border-color: var(--amber); }
+
+/* HERO */
+.hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 10rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(181, 102, 42, 0.08), transparent 70%),
+        radial-gradient(ellipse 50% 30% at 85% 75%, rgba(181, 102, 42, 0.04), transparent 70%);
+    pointer-events: none;
+}
+
+.hero-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hero h1 em {
+    font-style: italic;
+    color: var(--amber-bright);
+    font-weight: 400;
+}
+
+.hero-sublayer {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+    max-width: 36ch;
+    position: relative;
+    letter-spacing: -0.01em;
+}
+
+.hero-lines {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.9;
+    color: var(--cream-dim);
+    letter-spacing: -0.005em;
+    position: relative;
+}
+
+.hero-lines .line { display: block; }
+
+section {
+    padding: 7rem 0;
+    border-top: 1px solid var(--line-soft);
+    position: relative;
+}
+
+.section-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: block;
+}
+
+/* HOW I WORK */
+.how-i-work { padding: 8rem 0; }
+
+.big-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.85rem, 4.2vw, 2.9rem);
+    line-height: 1.3;
+    color: var(--cream);
+    max-width: 34ch;
+    margin: 0 0 3.5rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--amber);
+    letter-spacing: -0.01em;
+}
+
+.poem {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2.1vw, 1.45rem);
+    line-height: 1.9;
+    color: var(--cream);
+    max-width: 44rem;
+}
+
+.poem .line { display: block; }
+.poem .stanza { margin-bottom: 1.5rem; }
+.poem .stanza:last-child { margin-bottom: 0; }
+.poem .dim { color: var(--cream-dim); }
+
+/* WHAT DRIVES A TRACK */
+.drives { background: var(--ink-soft); }
+
+.drives-intro {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 3.5rem;
+    max-width: 44rem;
+}
+
+.drives-block {
+    max-width: 44rem;
+    margin-bottom: 3.5rem;
+}
+
+.drives-block:last-child { margin-bottom: 0; }
+
+.drives-block .line {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.8;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+}
+
+.drives-block .dim { color: var(--cream-dim); }
+
+.drives-block .spacer {
+    display: block;
+    height: 1.2rem;
+}
+
+/* WHO THIS IS FOR */
+.for-whom .for-whom-intro {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+    max-width: 40ch;
+}
+
+.for-whom .for-whom-body {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.85;
+    color: var(--cream-dim);
+    max-width: 44rem;
+}
+
+.for-whom .for-whom-body .line { display: block; }
+
+.genre-tags {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.genre-tags .tag {
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 0.4rem;
+}
+
+/* SERVICES */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 1rem;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.service-item {
+    padding: 2.5rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s;
+    position: relative;
+}
+
+.service-item:hover { background: rgba(181, 102, 42, 0.04); }
+
+.service-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.service-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.service-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cream-faint);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.service-body {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.75;
+}
+
+.service-body .line { display: block; }
+.service-body .dim { color: var(--cream-dim); }
+
+/* TRACK RECORD */
+.track-record { background: var(--ink-soft); }
+
+.track-record-body {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2.1vw, 1.45rem);
+    line-height: 1.85;
+    color: var(--cream);
+    max-width: 44rem;
+}
+
+.track-record-body .line { display: block; }
+.track-record-body .dim { color: var(--cream-dim); }
+.track-record-body .spacer { display: block; height: 1rem; }
+
+/* SETUP */
+.setup-intro {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2.1vw, 1.45rem);
+    line-height: 1.85;
+    color: var(--cream);
+    max-width: 44rem;
+    margin-bottom: 2rem;
+}
+
+.setup-intro .line { display: block; }
+.setup-intro .dim { color: var(--cream-dim); }
+.setup-intro .spacer { display: block; height: 1rem; }
+
+.setup-emphasis {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+    line-height: 1.5;
+    color: var(--cream);
+    max-width: 44rem;
+    margin: 3rem 0 4rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--amber);
+}
+
+.setup-emphasis .line { display: block; }
+
+/* The chain block */
+.chain {
+    margin-top: 3rem;
+    max-width: 68rem;
+}
+
+.chain-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.chain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+.chain-col {
+    padding: 0 2rem;
+    border-right: 1px solid var(--line-soft);
+}
+
+.chain-col:first-child { padding-left: 0; }
+.chain-col:last-child { border-right: none; padding-right: 0; }
+
+.chain-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    color: var(--cream-faint);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.chain-list {
+    list-style: none;
+}
+
+.chain-list li {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+}
+
+.chain-list li.primary {
+    color: var(--cream);
+    font-weight: 500;
+}
+
+.chain-list li.secondary { color: var(--cream-dim); }
+
+/* CTA */
+.cta {
+    padding: 9rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(181, 102, 42, 0.06), transparent 70%);
+    pointer-events: none;
+}
+
+.cta-content {
+    max-width: 58rem;
+    position: relative;
+}
+
+.cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+    max-width: 24ch;
+}
+
+.cta-headline em {
+    font-style: italic;
+    color: var(--amber-bright);
+    font-weight: 400;
+}
+
+.cta-body {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--cream);
+    margin-bottom: 2rem;
+    max-width: 44rem;
+}
+
+.cta-body .line { display: block; }
+
+.cta-offer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    max-width: 48rem;
+}
+
+.cta-offer-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+}
+
+.cta-offer-item .label {
+    display: block;
+    color: var(--amber-bright);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.cta-tail {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    margin-bottom: 2.5rem;
+    max-width: 44rem;
+}
+
+.cta-tail .line { display: block; }
+
+.cta-newcomer {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--cream);
+    margin-bottom: 3rem;
+    max-width: 44rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--amber);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.1rem 2.25rem;
+    background: var(--amber);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    border: 1px solid var(--amber);
+}
+
+.cta-button:hover {
+    background: var(--amber-bright);
+    border-color: var(--amber-bright);
+    transform: translateY(-1px);
+}
+
+.cta-links {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cta-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.3rem;
+    transition: all 0.2s;
+}
+
+.cta-links a:hover { color: var(--amber-bright); border-color: var(--amber); }
+
+.cross-link {
+    padding: 3.5rem 0;
+    text-align: center;
+    border-top: 1px solid var(--line-soft);
+}
+
+.cross-link a {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--cream-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cross-link a:hover { color: var(--amber-bright); }
+
+footer {
+    padding: 3rem 0;
+    border-top: 1px solid var(--line-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cream-faint);
+    letter-spacing: 0.06em;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+.footer-links a {
+    color: var(--cream-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--amber-bright); }
+
+@media (max-width: 820px) {
+    .container { padding: 0 1.5rem; }
+    .hero { min-height: auto; padding: 8rem 0 5rem; }
+    section { padding: 5rem 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-item { padding: 2rem 1.5rem; }
+    .chain-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .chain-col {
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line-soft);
+        padding-bottom: 2rem;
+    }
+    .chain-col:last-child { border-bottom: none; }
+    .cta { padding: 6rem 0; }
+    .cta-button { width: 100%; text-align: center; }
+    .cta-offer {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+        <a href="index.html" class="logo">
+            <img src="logo.svg" alt="ElsterSide">
+            <span class="logo-text">ElsterSide</span>
+        </a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-back">← Home</a>
+            <button class="lang-toggle" onclick="toggleLang()">
+                <span class="en">DE</span>
+                <span class="de">EN</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-subtitle reveal">
+            Mixing & Mastering · For Artists & Producers
+        </div>
+        <h1 class="reveal">I mix for the <em>song.</em> Always.</h1>
+        <p class="hero-sublayer reveal en">
+            Tracks that work where it matters.
+        </p>
+        <p class="hero-sublayer reveal de">
+            Tracks, die da funktionieren, wo es zählt.
+        </p>
+        <div class="hero-lines reveal en">
+            <span class="line">Club systems, streaming, real speakers —</span>
+            <span class="line">from iPhone to Funktion-One.</span>
+        </div>
+        <div class="hero-lines reveal de">
+            <span class="line">Im Club.</span>
+            <span class="line">Im Stream.</span>
+            <span class="line">Auf echten Soundsystemen, vom iPhone bis zur Funktion-One.</span>
+        </div>
+    </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="how-i-work">
+    <div class="container">
+        <span class="section-marker">How I work</span>
+        <blockquote class="big-quote">
+            „Plugins don't make records. Decisions do."
+        </blockquote>
+        <div class="poem en">
+            <div class="stanza">
+                <span class="line">A good mix is not a sum of tools.</span>
+                <span class="line">It's a chain of decisions.</span>
+            </div>
+            <div class="stanza dim">
+                <span class="line">What leads.</span>
+                <span class="line">What carries underneath.</span>
+                <span class="line">What makes room.</span>
+                <span class="line">And what's in the song's way.</span>
+            </div>
+        </div>
+        <div class="poem de">
+            <div class="stanza">
+                <span class="line">Ein guter Mix ist keine Summe von Tools.</span>
+                <span class="line">Er ist eine Reihe von Entscheidungen.</span>
+            </div>
+            <div class="stanza dim">
+                <span class="line">Was im Fokus steht.</span>
+                <span class="line">Was im Hintergrund trägt.</span>
+                <span class="line">Was Platz machen muss weil es dem Song im Weg steht.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT DRIVES A TRACK -->
+<section class="drives">
+    <div class="container">
+        <span class="section-marker">What drives a track</span>
+        <p class="drives-intro en">
+            I work at the intersection of club and mainstream.
+        </p>
+        <p class="drives-intro de">
+            Ich arbeite an der Schnittstelle zwischen Club und Mainstream.
+        </p>
+
+        <div class="drives-block en">
+            <span class="line">A track has to hit on the festival stage,</span>
+            <span class="line">travel on streaming and hold up on real systems.</span>
+        </div>
+        <div class="drives-block de">
+            <span class="line">Ein Track muss auf der Festival-Stage Druck machen,</span>
+            <span class="line">im Streaming tragen und auf echten Soundsystemen funktionieren.</span>
+        </div>
+
+        <div class="drives-block en">
+            <span class="line">Mixing and mastering aren't separate processes for me.</span>
+            <span class="spacer"></span>
+            <span class="line">I work from step one toward the final result.</span>
+            <span class="line">A track has to be at release level in the mix already.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Mastering is refinement, not rescue.</span>
+        </div>
+        <div class="drives-block de">
+            <span class="line">Mixing und Mastering sind für mich keine getrennten Prozesse.</span>
+            <span class="spacer"></span>
+            <span class="line">Ich arbeite vom ersten Schritt an auf das finale Ergebnis hin.</span>
+            <span class="line">Ein Track muss im Mix schon auf Release-Niveau stehen.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Das Master ist Veredelung und Feinschliff, nicht die Rettung.</span>
+        </div>
+
+        <div class="drives-block en">
+            <span class="line">My job isn't to balance levels.</span>
+            <span class="line">My job is to bring the track into shape.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Sounds get defined.</span>
+            <span class="line dim">Structure gets adjusted.</span>
+            <span class="line dim">Everything gets a clear direction.</span>
+            <span class="spacer"></span>
+            <span class="line">What's left is a track that doesn't just work technically,</span>
+            <span class="line">but holds its place in context.</span>
+        </div>
+        <div class="drives-block de">
+            <span class="line">Mein Job ist nicht, Pegel zu balancieren.</span>
+            <span class="line">Mein Job ist, den Track in Form zu bringen.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Sounds werden definiert.</span>
+            <span class="line dim">Strukturen angepasst.</span>
+            <span class="line dim">Alles bekommt eine klare Richtung.</span>
+            <span class="spacer"></span>
+            <span class="line">Am Ende steht ein Track, der nicht nur technisch funktioniert,</span>
+            <span class="line">sondern sich im Kontext durchsetzt.</span>
+        </div>
+    </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="for-whom">
+    <div class="container">
+        <span class="section-marker">Who this is for</span>
+        <p class="for-whom-intro en">
+            For artists and producers who want their tracks to hold up next to major releases.
+        </p>
+        <p class="for-whom-intro de">
+            Für Artists und Producer, die wollen, dass ihre Tracks neben Major-Releases bestehen.
+        </p>
+        <div class="for-whom-body en">
+            <span class="line">If your music sits somewhere between club and mainstream,</span>
+            <span class="line">this is where it needs to work.</span>
+        </div>
+        <div class="for-whom-body de">
+            <span class="line">Wenn deine Musik irgendwo zwischen Club und Mainstream sitzt,</span>
+            <span class="line">ist das der Ort, an dem sie funktionieren muss.</span>
+        </div>
+        <div class="genre-tags">
+            <span class="tag">Pop</span>
+            <span class="tag">Electronic</span>
+            <span class="tag">Club-oriented</span>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+    <div class="container">
+        <span class="section-marker">Services</span>
+        <div class="services-grid">
+            <div class="service-item">
+                <span class="service-number">01</span>
+                <h3 class="service-title">Mixing</h3>
+                <span class="service-subtitle">Full mix or stem mixing</span>
+                <div class="service-body en">
+                    <span class="line">From rough mix to release-ready —</span>
+                    <span class="line dim">clear low end, stable vocals, a sound that works.</span>
+                </div>
+                <div class="service-body de">
+                    <span class="line">Vom Roughmix bis zur fertigen Version —</span>
+                    <span class="line dim">mit klarem Low-End, stabilen Vocals und einem Sound, der funktioniert.</span>
+                </div>
+            </div>
+            <div class="service-item">
+                <span class="service-number">02</span>
+                <h3 class="service-title">Vocal Production & Editing</h3>
+                <span class="service-subtitle">Tuning, timing, comping, vocal mix</span>
+                <div class="service-body en">
+                    <span class="line">The voice carries the song.</span>
+                    <span class="line dim">So that's how we treat it.</span>
+                </div>
+                <div class="service-body de">
+                    <span class="line">Die Stimme trägt den Song.</span>
+                    <span class="line dim">Also behandeln wir sie auch so.</span>
+                </div>
+            </div>
+            <div class="service-item">
+                <span class="service-number">03</span>
+                <h3 class="service-title">Mastering</h3>
+                <span class="service-subtitle">Stereo or stem mastering</span>
+                <div class="service-body en">
+                    <span class="line">Loud enough for the market —</span>
+                    <span class="line dim">without losing the dynamics.</span>
+                </div>
+                <div class="service-body de">
+                    <span class="line">Laut genug für den Markt —</span>
+                    <span class="line dim">ohne die Dynamik zu verlieren.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track-record">
+    <div class="container">
+        <span class="section-marker">Track Record</span>
+        <div class="track-record-body en">
+            <span class="line">25 years of mixing for club, streaming and real-world playback.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Focus on electronic and pop-oriented productions.</span>
+        </div>
+        <div class="track-record-body de">
+            <span class="line">25 Jahre Mixing für Club, Streaming und reale Anwendungen.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Fokus auf elektronische und pop-orientierte Produktionen.</span>
+        </div>
+    </div>
+</section>
+
+<!-- SETUP -->
+<section>
+    <div class="container">
+        <span class="section-marker">Setup</span>
+        <div class="setup-intro en">
+            <span class="line">Mixing at this level requires a reference you can trust.</span>
+            <span class="spacer"></span>
+            <span class="line dim">I work on Kii Audio THREE — a precise, DSP-controlled system</span>
+            <span class="line dim">that lets me make tonal and dynamic decisions without guesswork.</span>
+        </div>
+        <div class="setup-intro de">
+            <span class="line">Mixing auf diesem Level braucht eine Referenz, der du vertrauen kannst.</span>
+            <span class="spacer"></span>
+            <span class="line dim">Ich arbeite auf Kii Audio THREE — ein präzises, DSP-gesteuertes System,</span>
+            <span class="line dim">mit dem ich tonale und dynamische Entscheidungen ohne Guesswork treffe.</span>
+        </div>
+
+        <div class="setup-emphasis en">
+            <span class="line">I hear what's in the track.</span>
+            <span class="line">Not what the room adds to it.</span>
+        </div>
+        <div class="setup-emphasis de">
+            <span class="line">Ich höre, was im Track ist.</span>
+            <span class="line">Nicht das, was der Raum dazu generiert.</span>
+        </div>
+
+        <div class="chain">
+            <div class="chain-header">Signal Chain</div>
+            <div class="chain-grid">
+                <div class="chain-col">
+                    <span class="chain-label">Monitoring</span>
+                    <ul class="chain-list">
+                        <li class="primary">Kii Audio THREE</li>
+                        <li class="secondary">Genelec</li>
+                    </ul>
+                </div>
+                <div class="chain-col">
+                    <span class="chain-label">Mixing</span>
+                    <ul class="chain-list">
+                        <li class="primary">Process Audio</li>
+                        <li class="primary">Eventide</li>
+                        <li class="primary">Metric Halo</li>
+                        <li class="secondary">FabFilter</li>
+                        <li class="secondary">MixWave</li>
+                        <li class="secondary">Soundtheory</li>
+                    </ul>
+                </div>
+                <div class="chain-col">
+                    <span class="chain-label">Mastering</span>
+                    <ul class="chain-list">
+                        <li class="primary">Weiss</li>
+                        <li class="primary">Maselec</li>
+                        <li class="primary">Dangerous Music</li>
+                        <li class="secondary">Schwabe Digital</li>
+                        <li class="secondary">Brainworx</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <span class="section-marker">Send your track</span>
+            <h2 class="cta-headline en">Send me your <em>track</em> for a short mix feedback.</h2>
+            <h2 class="cta-headline de">Schick mir deinen <em>Track</em> für ein kurzes Mix-Feedback.</h2>
+            <div class="cta-body en">
+                <span class="line">I'll tell you in a few points</span>
+                <span class="line">what works — and where you're leaving something behind.</span>
+            </div>
+            <div class="cta-body de">
+                <span class="line">Ich sag dir in wenigen Punkten,</span>
+                <span class="line">was funktioniert — und wo du liegen lässt.</span>
+            </div>
+            <div class="cta-offer">
+                <div class="cta-offer-item">
+                    <span class="label">01</span>
+                    <span class="en">Focus on mix & impact</span>
+                    <span class="de">Fokus auf Mix & Wirkung</span>
+                </div>
+                <div class="cta-offer-item">
+                    <span class="label">02</span>
+                    <span class="en">3–5 concrete points</span>
+                    <span class="de">3–5 konkrete Punkte</span>
+                </div>
+                <div class="cta-offer-item">
+                    <span class="label">03</span>
+                    <span class="en">Reply within 48h</span>
+                    <span class="de">Antwort innerhalb von 48h</span>
+                </div>
+            </div>
+            <div class="cta-tail en">
+                <span class="line">If it fits, I'll also tell you</span>
+                <span class="line">how I'd take the track to release level.</span>
+            </div>
+            <div class="cta-tail de">
+                <span class="line">Wenn es passt, sag ich dir auch,</span>
+                <span class="line">wie ich den Track auf Release-Niveau bringe.</span>
+            </div>
+            <p class="cta-newcomer">
+                <span class="en">Newcomers & upcoming artists — feel welcome to drop me your project. If it fits, we'll find a way.</span>
+                <span class="de">Newcomer & upcoming Artists — schick mir gern dein Projekt. Wenn es matcht, finden wir einen Weg.</span>
+            </p>
+            <a href="mailto:jens@elstersidestudios.de?subject=Mix%20feedback%20request" class="cta-button">
+                <span class="en">Send your track →</span>
+                <span class="de">Track einreichen →</span>
+            </a>
+            <div class="cta-links">
+                <a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank" rel="noopener">SoundBetter</a>
+                <a href="https://www.linkedin.com/in/jensrotte/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:jens@elstersidestudios.de">Email</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CROSS-LINK -->
+<section class="cross-link">
+    <div class="container">
+        <a href="companies.html">
+            <span class="en">Looking for commercial audio or AI voice? → Companies</span>
+            <span class="de">Commercial Audio oder KI-Stimme gesucht? → Companies</span>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-row">
+        <div>© 2026 ElsterSide Studios · Leipzig, Germany</div>
+        <div class="footer-links">
+            <a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank" rel="noopener">SoundBetter</a>
+            <a href="https://www.linkedin.com/in/jensrotte/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="impressum.html#privacy">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleLang() {
+    document.body.classList.toggle('lang-de');
+    try {
+        localStorage.setItem('elsterside-lang', document.body.classList.contains('lang-de') ? 'de' : 'en');
+    } catch (e) {}
+}
+
+try {
+    if (localStorage.getItem('elsterside-lang') === 'de') {
+        document.body.classList.add('lang-de');
+    } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang && userLang.toLowerCase().startsWith('de')) {
+            document.body.classList.add('lang-de');
+        }
+    }
+} catch (e) {}
+
+window.addEventListener('load', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach((el, i) => {
+        setTimeout(() => el.classList.add('is-visible'), 120 * i);
+    });
+});
+</script>
+
+</body>
+</html>
