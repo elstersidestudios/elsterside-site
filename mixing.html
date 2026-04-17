@@ -481,8 +481,37 @@ section {
 }
 
 .cta-content {
-    max-width: 58rem;
+    max-width: 72rem;
     position: relative;
+}
+
+.cta-split {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 5rem;
+    align-items: start;
+}
+
+.cta-portrait {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+    display: block;
+    filter: brightness(0.92);
+}
+
+@media (max-width: 900px) {
+    .cta-split {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .cta-portrait {
+        width: 100%;
+        height: 260px;
+        order: -1;
+    }
 }
 
 .cta-headline {
@@ -980,10 +1009,8 @@ footer {
 <section class="cta">
     <div class="container">
         <div class="cta-content">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:2.5rem;">
-                <img src="portrait.jpg" alt="Jens Rotte" style="width:80px; height:80px; border-radius:50%; object-fit:cover; object-position:center top; border:1px solid rgba(238,233,227,0.15);">
-                <span style="font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--cream-dim); letter-spacing:0.08em; text-transform:uppercase;">Jens Rotte · ElsterSide Studios</span>
-            </div>
+            <div class="cta-split">
+            <div class="cta-left">
             <span class="section-marker">Send your track</span>
             <h2 class="cta-headline en">Send me your <em>track</em> for a short mix feedback.</h2>
             <h2 class="cta-headline de">Schick mir deinen <em>Track</em> für ein kurzes Mix-Feedback.</h2>
@@ -1032,6 +1059,11 @@ footer {
                 <a href="https://soundbetter.com/profiles/609672-mixed-by-elsterside" target="_blank" rel="noopener">SoundBetter</a>
                 <a href="https://www.linkedin.com/in/jensrotte/" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="mailto:jens@elstersidestudios.de">Email</a>
+            </div>
+            </div>
+            <div class="cta-right">
+                <img src="portrait.jpg" alt="Jens Rotte" class="cta-portrait">
+            </div>
             </div>
         </div>
     </div>
