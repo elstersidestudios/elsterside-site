@@ -712,6 +712,74 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* EARLY FUNNEL */
+.early-funnel {
+    padding: 5rem 0;
+    background: var(--ink-soft);
+}
+
+.early-funnel-inner {
+    max-width: 44rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--amber);
+}
+
+.early-funnel-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.early-funnel-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+    color: var(--cream);
+}
+
+.early-funnel-body {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.8;
+    color: var(--cream-dim);
+    margin-bottom: 1rem;
+}
+
+.early-funnel-tail {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--cream-dim);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.early-funnel-btn {
+    display: inline-block;
+    padding: 0.9rem 1.8rem;
+    background: transparent;
+    color: var(--amber-bright);
+    text-decoration: none;
+    border: 1px solid var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+}
+
+.early-funnel-btn:hover {
+    background: var(--amber);
+    color: var(--cream);
+}
 </style>
 </head>
 <body>
@@ -753,6 +821,33 @@ footer {
             <span class="line">Im Club.</span>
             <span class="line">Im Stream.</span>
             <span class="line">Auf echten Soundsystemen, vom iPhone bis zur Funktion-One.</span>
+        </div>
+    </div>
+</section>
+
+<!-- EARLY FUNNEL -->
+<section class="early-funnel">
+    <div class="container">
+        <div class="early-funnel-inner">
+            <span class="early-funnel-marker">Free Mix Feedback</span>
+            <h2 class="early-funnel-headline en">Send me your track.</h2>
+            <h2 class="early-funnel-headline de">Schick mir deinen Track.</h2>
+            <p class="early-funnel-body en">
+                I'll give you 3–5 honest points on what's working —<br>
+                and where you're leaving something behind.<br>
+                Free. Reply within 48h.
+            </p>
+            <p class="early-funnel-body de">
+                Ich sag dir in 3–5 Punkten, was funktioniert —<br>
+                und wo du noch Defizite hast.<br>
+                Kostenlos. Antwort innerhalb von 48h.
+            </p>
+            <p class="early-funnel-tail en">If it fits, I'll tell you how I'd take it to release level.</p>
+            <p class="early-funnel-tail de">Wenn es passt, sag ich dir, wie ich den Track auf Release-Niveau bringe.</p>
+            <a href="mailto:jens@elstersidestudios.de?subject=Mix%20feedback%20request" class="early-funnel-btn">
+                <span class="en">Send your track →</span>
+                <span class="de">Track einschicken →</span>
+            </a>
         </div>
     </div>
 </section>
