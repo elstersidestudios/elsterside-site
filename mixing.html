@@ -1333,11 +1333,6 @@ function toggleLang() {
 try {
     if (localStorage.getItem('elsterside-lang') === 'de') {
         document.body.classList.add('lang-de');
-    } else {
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang && userLang.toLowerCase().startsWith('de')) {
-            document.body.classList.add('lang-de');
-        }
     }
 } catch (e) {}
 
