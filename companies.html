@@ -42,11 +42,11 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
 .r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes kenburns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.08) translate(-1%,-1%)}}
+@keyframes kenburns{0%{transform:scale(1.08) translate(1%,1%)}100%{transform:scale(1) translate(0,0)}}
 
 /* HERO */
 #hero{position:relative;min-height:72vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 52px 96px;border-bottom:1px solid var(--edge);overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;background:url('companies-hero.jpg') center 40%/cover no-repeat;animation:kenburns 22s ease-out forwards}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('companies-hero.jpg') center 55%/cover no-repeat;animation:kenburns 22s ease-out forwards}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,14,20,.55) 0%,rgba(9,14,20,.30) 30%,rgba(9,14,20,.75) 65%,rgba(9,14,20,.98) 100%)}
 .hero-inner{position:relative;z-index:2;max-width:880px;margin:0 auto;width:100%}
 .photo-credit{position:absolute;bottom:10px;right:16px;z-index:3;font-family:var(--mono);font-size:8px;font-weight:300;color:rgba(238,233,227,0.25);letter-spacing:.06em}
