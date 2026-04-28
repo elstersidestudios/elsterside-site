@@ -48,6 +48,11 @@ span.en, a.en { display: inline; }
     padding: 0 2rem;
 }
 
+.hero > .container {
+    position: relative;
+    z-index: 2;
+}
+
 header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -129,12 +134,13 @@ header {
     z-index: 0;
 }
 
-.hero::before {
+.hero::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(9, 14, 20, 0.68);
     pointer-events: none;
+    z-index: 1;
 }
 
 .hero-subtitle {
