@@ -107,6 +107,8 @@ header {
 .lang-toggle:hover { color: var(--amber-bright); border-color: var(--amber); }
 
 /* HERO */
+@keyframes kenburnsIn{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+
 .hero {
     min-height: 92vh;
     display: flex;
@@ -114,9 +116,17 @@ header {
     padding: 10rem 0 6rem;
     position: relative;
     overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-image: url('studio-hero.jpg');
     background-size: cover;
     background-position: center 30%;
+    animation: kenburnsIn 22s ease-out forwards;
+    z-index: 0;
 }
 
 .hero::before {
@@ -1331,7 +1341,9 @@ function toggleLang() {
 }
 
 try {
-    if (localStorage.getItem('elsterside-lang') === 'de') {
+    const savedLang = localStorage.getItem('elsterside-lang');
+    const browserDE = navigator.language.startsWith('de');
+    if (savedLang === 'de' || (!savedLang && browserDE)) {
         document.body.classList.add('lang-de');
     }
 } catch (e) {}

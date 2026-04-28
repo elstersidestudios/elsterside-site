@@ -207,7 +207,7 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.07});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
-setLang(localStorage.getItem('lang')||'en');
+const _saved=localStorage.getItem('lang');const _de=navigator.language.startsWith('de');setLang(_saved||(_de?'de':'en'));
 </script>
 </body>
 </html>
