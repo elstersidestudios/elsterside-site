@@ -210,6 +210,17 @@ footer{border-top:1px solid var(--edge);padding:30px 52px;display:flex;justify-c
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+const heroBg=document.querySelector('.hero-bg');
+const heroInner=document.querySelector('.hero-inner');
+const heroEl=document.getElementById('hero');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const h=heroEl.offsetHeight;
+  if(y<h){
+    heroBg.style.transform=`translateY(${y*0.3}px)`;
+    heroInner.style.transform=`translateY(${y*0.18}px)`;
+  }
+},{passive:true});
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.07});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
