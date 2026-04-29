@@ -129,8 +129,7 @@ header {
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
+.hero-bg {
     position: absolute;
     inset: 0;
     background-image: url('studio-hero.jpg');
@@ -930,7 +929,9 @@ footer {
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
     <div class="container">
         <div class="hero-subtitle reveal">
             Mixing & Mastering · For Artists & Producers
@@ -951,6 +952,7 @@ footer {
             <span class="line">Im Stream.</span>
             <span class="line">Auf echten Soundsystemen, vom iPhone bis zur Funktion-One.</span>
         </div>
+    </div>
     </div>
 </section>
 
@@ -1345,6 +1347,18 @@ footer {
 </footer>
 
 <script>
+const _heroBg=document.querySelector('.hero-bg');
+const _heroInner=document.querySelector('.hero-inner');
+const _heroEl=document.getElementById('hero');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const h=_heroEl.offsetHeight;
+  if(y<h){
+    _heroBg.style.transform=`translateY(${y*0.3}px)`;
+    _heroInner.style.transform=`translateY(${y*0.18}px)`;
+  }
+},{passive:true});
+
 function toggleLang() {
     document.body.classList.toggle('lang-de');
     try {
