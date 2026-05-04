@@ -59,67 +59,23 @@ span.en, a.en { display: inline; }
     z-index: 2;
 }
 
-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.5rem 0;
-    background: rgba(9, 14, 20, 0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--line-soft);
-}
-
-.nav { display: flex; justify-content: space-between; align-items: center; }
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--cream);
-}
-
-.logo img { height: 42px; filter: brightness(0) invert(1); }
-
-.logo-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.nav-right { display: flex; align-items: center; gap: 1.5rem; }
-
-.nav-back {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--cream-dim);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-}
-
-.nav-back:hover { color: var(--amber-bright); }
+nav{position:fixed;top:0;left:0;right:0;z-index:400;height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+nav.scrolled{background:rgba(9,14,20,.94);backdrop-filter:blur(16px);border-bottom-color:var(--edge)}
+.logo-link{display:flex;align-items:center}
+.logo-link img{display:block;height:42px;width:auto;filter:brightness(0) invert(1)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cream)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-toggle{display:flex;align-items:center;border:1px solid var(--edgehi);overflow:hidden}
+.lang-btn{font-family:var(--mono);font-size:9px;font-weight:300;letter-spacing:.1em;color:var(--c35);padding:6px 12px;cursor:pointer;transition:background .2s,color .2s;background:none;border:none}
+.lang-btn.active{background:var(--c08);color:var(--cream)}
+.lang-btn:hover{color:var(--cream)}
 
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 #ticker{overflow:hidden;height:44px;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);background:var(--panel);display:flex;align-items:center;position:relative;z-index:2}
 .ticker-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite}
-
-.lang-toggle {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--cream-dim);
-    background: none;
-    border: 1px solid var(--line);
-    padding: 0.45rem 0.75rem;
-    cursor: pointer;
-    letter-spacing: 0.08em;
-    transition: all 0.2s;
-}
-
-.lang-toggle:hover { color: var(--amber-bright); border-color: var(--amber); }
+.tick{font-family:var(--mono);font-size:9px;font-weight:300;color:var(--c35);letter-spacing:.12em;text-transform:uppercase;padding:0 28px;border-right:1px solid var(--edge);height:44px;display:flex;align-items:center;flex-shrink:0}
 
 /* HERO */
 @keyframes kenburnsIn{0%{transform:scale(1)}100%{transform:scale(1.08)}}
@@ -921,22 +877,14 @@ footer {
 </head>
 <body>
 
-<header>
-    <div class="container nav">
-        <a href="index.html" class="logo">
-            <img src="logo.svg" alt="ElsterSide">
-
-        </a>
-        <div class="nav-right">
-            <a href="index.html" class="nav-back">← Home</a>
-            <a href="companies.html" class="nav-back">Companies</a>
-            <button class="lang-toggle" onclick="toggleLang()">
-                <span class="en">DE</span>
-                <span class="de">EN</span>
-            </button>
-        </div>
-    </div>
-</header>
+<nav id="nav">
+  <a class="logo-link" href="index.html"><img src="logo.svg" alt="ElsterSide Studios"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-en>Home</a><a href="index.html" data-de>Home</a></li>
+    <li><a href="companies.html" data-en>Companies</a><a href="companies.html" data-de>Unternehmen</a></li>
+  </ul>
+  <div class="nav-right"><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('de')">DE</button></div></div>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -1357,20 +1305,13 @@ window.addEventListener('scroll',()=>{
   }
 },{passive:true});
 
-function toggleLang() {
-    document.body.classList.toggle('lang-de');
-    try {
-        localStorage.setItem('elsterside-lang', document.body.classList.contains('lang-de') ? 'de' : 'en');
-    } catch (e) {}
-}
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.07});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
-try {
-    const savedLang = localStorage.getItem('elsterside-lang');
-    const browserDE = navigator.language.startsWith('de');
-    if (savedLang === 'de' || (!savedLang && browserDE)) {
-        document.body.classList.add('lang-de');
-    }
-} catch (e) {}
+function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));localStorage.setItem('lang',l)}
+const _saved=localStorage.getItem('lang');const _de=navigator.language.startsWith('de');setLang(_saved||(_de?'de':'en'));
 
 window.addEventListener('load', () => {
     const reveals = document.querySelectorAll('.reveal');
