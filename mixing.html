@@ -80,7 +80,7 @@ header {
     color: var(--cream);
 }
 
-.logo img { height: 28px; filter: brightness(0) invert(1); }
+.logo img { height: 42px; filter: brightness(0) invert(1); }
 
 .logo-text {
     font-family: 'Playfair Display', serif;
@@ -102,6 +102,10 @@ header {
 }
 
 .nav-back:hover { color: var(--amber-bright); }
+
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+#ticker{overflow:hidden;height:44px;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);background:var(--panel);display:flex;align-items:center;position:relative;z-index:2}
+.ticker-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite}
 
 .lang-toggle {
     font-family: 'JetBrains Mono', monospace;
@@ -962,6 +966,11 @@ footer {
     </div>
 </section>
 
+<div id="ticker"><div class="ticker-track">
+  <span class="tick">Kii Audio Three</span><span class="tick">Process Audio</span><span class="tick">Weiss</span><span class="tick">Eventide</span><span class="tick">Metric Halo</span><span class="tick">Maselec</span><span class="tick">FabFilter</span><span class="tick">Dangerous Music</span><span class="tick">Soundtheory</span><span class="tick">Brainworx</span><span class="tick">MixWave</span><span class="tick">Schwabe Digital</span><span class="tick">Genelec</span><span class="tick">25+ Years</span>
+  <span class="tick">Kii Audio Three</span><span class="tick">Process Audio</span><span class="tick">Weiss</span><span class="tick">Eventide</span><span class="tick">Metric Halo</span><span class="tick">Maselec</span><span class="tick">FabFilter</span><span class="tick">Dangerous Music</span><span class="tick">Soundtheory</span><span class="tick">Brainworx</span><span class="tick">MixWave</span><span class="tick">Schwabe Digital</span><span class="tick">Genelec</span><span class="tick">25+ Years</span>
+</div></div>
+
 <!-- EARLY FUNNEL -->
 <section class="early-funnel">
     <div class="container">
@@ -1068,7 +1077,7 @@ footer {
         </div>
         <div style="margin-top:3rem;">
             <p class="for-whom-intro en">Artists and producers who want to compete with major releases.</p>
-            <p class="for-whom-intro de">Für Artists und Producer, die wollen, dass ihre Tracks neben Major-Releases bestehen.</p>
+            <p class="for-whom-intro de">Für Artists und Producer mit Anspruch auf Major-Release-Niveau.</p>
             <div class="genre-tags" style="margin-top:1.5rem;">
                 <span class="tag">Pop</span>
                 <span class="tag">Electronic</span>
