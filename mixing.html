@@ -25,6 +25,13 @@
     --amber-bright: #d17a37;
     --line: rgba(238, 233, 227, 0.12);
     --line-soft: rgba(238, 233, 227, 0.06);
+    --panel: #0f1621;
+    --edge: rgba(238,233,227,.08);
+    --edgehi: rgba(238,233,227,.14);
+    --c08: rgba(238,233,227,.08);
+    --c35: rgba(238,233,227,.35);
+    --c60: rgba(238,233,227,.60);
+    --mono: 'JetBrains Mono', monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,6 +52,8 @@ body.lang-de .de { display: block; }
 body.lang-de .en { display: none; }
 body.lang-de span.de, body.lang-de a.de { display: inline; }
 body.lang-de span.en, body.lang-de a.en { display: none; }
+.lang-de [data-en]{display:none!important}
+.lang-en [data-de]{display:none!important}
 span.de, a.de { display: none; }
 span.en, a.en { display: inline; }
 
@@ -64,7 +73,7 @@ nav.scrolled{background:rgba(9,14,20,.94);backdrop-filter:blur(16px);border-bott
 .logo-link{display:flex;align-items:center}
 .logo-link img{display:block;height:42px;width:auto;filter:brightness(0) invert(1)}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.nav-links a{font-family:var(--mono);font-size:10px;font-weight:300;color:var(--c60);letter-spacing:.14em;text-transform:uppercase;transition:color .2s;text-decoration:none}
 .nav-links a:hover,.nav-links a.active{color:var(--cream)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-toggle{display:flex;align-items:center;border:1px solid var(--edgehi);overflow:hidden}
